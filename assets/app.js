@@ -19,8 +19,12 @@ function addDownloadFile() {
   var progressCell = row.insertCell(PROGRESS_CELL_INDEX);
   var cancelCell = row.insertCell(CANCEL_CELL_INDEX);
 
+  iconCell.innerHTML =
+      '<img src="assets/images/download-file-icon.png" alt="downloading">';
   fileNameCell.innerHTML = fileName;
   progressCell.innerHTML = '<progress value="0" max="100"></progress>';
+  cancelCell.innerHTML =
+      '<img src="assets/images/delete-icon.png" alt="delete">';
 }
 
 function downloadAll() {
