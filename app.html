@@ -1,24 +1,33 @@
 <html>
+  <head><link rel="stylesheet" href="assets/app.css"></link>
   <body>
     <header>Download Manager</header>
-    <div>
-        Files to download
-        <input type="text">
+    <div class="container">
+      <div class="container-banner">
+          Files to download
+          <input class="search-input" type="text" placeholder="Find by Name"
+              onkeyup="search(this)">
+      </div>
+      <hr>
+      <table id="downloading-table">
+        <thead>
+          <tr>
+            <th>
+            <th>File Name
+            <th>Progress
+            <th>
+        <tbody>
+        <tfoot>
+          <tr>
+            <td><img class="add-file-icon" alt="add-file"
+                src="assets/images/add-file-icon.png">
+            <td><input type="text" id="file-name-input"
+                placeholder="File name to add">
+            <td><button class="add-btn" onclick="addDownloadFile()">Add</button>
+            <td>
+      </table>
     </div>
-    <hr>
-    <table id="downloading-table">
-      <thead>
-        <tr>
-          <th>
-          <th>File Name
-          <th>Progress
-          <th>
-      <tbody>
-      <tfoot>
-        <tr>
-          <td><img src="assets/images/add-file-icon.png" alt="add-file">
-          <td><input type="text" id="file-name-input">
-          <td><button onclick="addDownloadFile()">Add</button>
-    </table>
-    <button onclick="downloadAll()">Download All</button>
+    <div class="download-btn-container">
+      <button class="download-btn" onclick="downloadAll()">Download All</button>
+    </div>
     <script src="assets/app.js"></script>

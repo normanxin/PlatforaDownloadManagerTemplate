@@ -19,12 +19,20 @@ function addDownloadFile() {
   var progressCell = row.insertCell(PROGRESS_CELL_INDEX);
   var cancelCell = row.insertCell(CANCEL_CELL_INDEX);
 
-  iconCell.innerHTML =
-      '<img src="assets/images/download-file-icon.png" alt="downloading">';
+  iconCell.innerHTML = '<img class="downloading-file-icon" alt="downloading" ' +
+      'src="assets/images/download-file-icon.png">';
   fileNameCell.innerHTML = fileName;
   progressCell.innerHTML = '<progress value="0" max="100"></progress>';
-  cancelCell.innerHTML =
-      '<img src="assets/images/delete-icon.png" alt="delete">';
+  cancelCell.innerHTML = '<img class="cancel-icon" ' +
+      'src="assets/images/delete-icon.png" ' +
+      'alt="delete" onclick="deleteDownloadFile(this)">';
+
+  document.getElementById('file-name-input').value = '';
+}
+
+function deleteDownloadFile(elem) {
+  var row = elem.parentNode.parentNode;
+  row.parentNode.removeChild(row);
 }
 
 function downloadAll() {
@@ -32,23 +40,44 @@ function downloadAll() {
       .getElementById('downloading-table')
       .getElementsByTagName('tbody')[0];
 
-  for (var i = 0; i < table.rows.length; i++) {
-    // var progress = table.rows[i].cells[PROGRESS_CELL_INDEX]
-    //     .getElementsByTagName('progress')[0];
-    var performDownloading = function(i) {
-      var progress = table.rows[i].cells[PROGRESS_CELL_INDEX]
-          .getElementsByTagName('progress')[0];
-      var timer = setInterval(function() {
-        var val = progress.getAttribute('value');
-        if (val >= 100) {
-          clearInterval(timer);
-          return;
-        }
+  var performDownloading = function(rowId) {
+    if (rowId >= table.rows.length) {
+      return;
+    }
 
-        progress.setAttribute('value',val + 10);
-      }, 1000);
-    };
+    var progress = table.rows[rowId].cells[PROGRESS_CELL_INDEX]
+        .getElementsByTagName('progress')[0];
 
-    setTimeout(performDownloading(i), 0);
+    var timer = setInterval(function() {
+      if (progress.value >= 100) {
+        clearInterval(timer);
+        performDownloading(rowId + 1);
+        return;
+      }
+
+      progress.value += 10;
+    }, 500 /* ms */);
+  }
+
+  performDownloading(0);
+}
+
+function search(elem) {
+  var HIDE_CLASS_NAME = 'hide';
+  var searchRegex = new RegExp(elem.value, 'i');
+
+  var rows = document
+      .getElementById('downloading-table')
+      .getElementsByTagName('tbody')[0]
+      .getElementsByTagName('tr');
+
+  for (var i = 0; i < rows.length; i++) {
+    var fileNameCell = rows[i].childNodes[FILE_NAME_CELL_INDEX];
+
+    if (!searchRegex.test(fileNameCell.textContent)) {
+      rows[i].classList.add(HIDE_CLASS_NAME);
+    } else {
+      rows[i].classList.remove(HIDE_CLASS_NAME);
+    }
   }
 }

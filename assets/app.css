@@ -1,0 +1,154 @@
+body {
+  background: #e4e5ea;
+  color: #534f54;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+header {
+  background: #39495f;
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
+  height: 2.5em;
+  line-height: 2.5em;
+  padding: 0 1.5em;
+}
+
+input {
+  border: 2px solid;
+  border-radius: 4px;
+}
+
+button {
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 1em;
+  height: 2em;
+}
+
+.container {
+  background: white;
+  margin: 3em;
+}
+
+.container-banner {
+  align-items: center;
+  display: flex;
+  font-size: 1.5em;
+  font-weight: bold;
+  height: 2.5em;
+  justify-content: space-between;
+  line-height: 2.5em;
+  padding: 0 1em;
+}
+
+.search-input {
+  background: url(images/search-icon.png) no-repeat 3% center/10%;
+  border-color: #e4e4e4;
+  height: 2.5em;
+  text-indent: 2.3em;
+  width: 15em;
+}
+
+hr {
+  margin: 0;
+}
+
+#downloading-table {
+  border-collapse: collapse;
+  font-size: 1.2em;
+  width: 100%;
+}
+
+#downloading-table thead tr {
+  height: 3em;
+  text-align: left;
+}
+
+#downloading-table tr {
+  height: 6em;
+}
+
+#downloading-table tbody tr:nth-child(odd) {
+  background: #f8f8f8;
+}
+
+#downloading-table tfoot tr {
+  background: #f8f8f8;
+  border: 2px dashed #e4e4e4;
+}
+
+#downloading-table td:nth-child(1), #downloading-table td:nth-child(4) {
+  width: 10%;
+  text-align: center;
+}
+
+#downloading-table td:nth-child(2) {
+  max-width: 0;
+  overflow: hidden;
+  padding-right: 2em;
+  text-overflow: ellipsis;
+  width: 30%;
+}
+
+#downloading-table td:nth-child(3) {
+  width: 50%;
+}
+
+#downloading-table progress[value] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 95%;
+  height: 30%;
+}
+
+#downloading-table progress[value]::-webkit-progress-bar {
+  background: #e2e2e2;
+  border-radius: 3px;
+}
+
+#downloading-table progress[value]::-webkit-progress-value {
+  background: #26bf8c;
+  border-radius: 3px;
+}
+
+.add-file-icon {
+  width: 3.7em;
+}
+
+.downloading-file-icon {
+  width: 3em;
+}
+
+.cancel-icon {
+  width: 1.5em;
+}
+
+#file-name-input {
+  border-color: #d1d1d1;
+  font-size: 1em;
+  height: 2em;
+  padding-left: 1em;
+  width: 80%;
+}
+
+.add-btn {
+  background: #42739e;
+  width: 8em;
+}
+
+.download-btn-container {
+  text-align: center;
+}
+
+.download-btn {
+  background: #26bf8c;
+  width: 16.5em;
+}
+
+.hide {
+  display: none;
+}
